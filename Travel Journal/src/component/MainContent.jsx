@@ -1,0 +1,20 @@
+import marker from '../assets/marker.png'
+
+
+export default function MainContent(props){
+    return (
+        <article className="journal-entry">
+        <div className="main-image-container">
+        <img className="main-image" src={props.img.src} alt={props.img.alt} />
+        </div>
+        <div className="info-container">
+            <img className="Marker" src={marker} alt="" /> 
+            <span className="country">{props.country}</span>
+            <a href={props.googleMapsLink}>View on map</a>
+            <h2 className="entry-title">{props.title}</h2>
+             <p className="trip-dates">{props.dates}</p>
+            <p  className="entry-text">{props.text}</p>
+        </div>
+        </article>  
+    )
+}

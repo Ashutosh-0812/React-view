@@ -1,0 +1,61 @@
+.main-content {
+  margin-top: 70px;
+  background-image: url(/React.png);
+  background-repeat: no-repeat;
+  background-size: 150px 150px; /* or 'contain' or 'cover' */
+  background-position: center top;
+  min-height: 300px; /* ensure there's enough space to see the image */
+}
+
+body {
+	background-color: #000;
+	color: #fff;
+}
+
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  background: #111;
+  z-index: 1000;
+  padding: 10px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  position: fixed;
+}
+
+.nac-list{
+  list-style: none;
+  display: flex;
+}
+
+.nac-list-item{
+
+  margin-right: 10px ;
+  font-size: 1.1rem;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: #111;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.2);
+}
+
+.main-content ol {
+  margin: 0 auto;
+  padding-left: 40px;
+  text-align: left;
+  max-width: 600px;
+}
+
+.main-content li {
+  text-align: left;
+  margin-bottom: 10px;
+}
