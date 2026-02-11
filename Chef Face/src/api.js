@@ -16,38 +16,23 @@ Rules:
 `;
 
 // Initialize Hugging Face client
-const hf = new HfInference(import.meta.env.VITE_HF_ACCESS_TOKEN);
+const anthropic = new Anthropic({
+    // Make sure you set an environment variable in Scrimba 
+    // for ANTHROPIC_API_KEY
+    apiKey: process.env.ANTHROPIC_API_KEY,
+    dangerouslyAllowBrowser: true,
+})
 
-// Main function
-export default async function getRecipeFromMistral(ingredientsArr) {
-  // Safety check
-  if (!ingredientsArr || ingredientsArr.length === 0) {
-    return "Please add some ingredients first 🙂";
-  }
+export async function getRecipeFromChefClaude(ingredientsArr) {
+    const ingredientsString = ingredientsArr.join(", ")
 
-  const ingredientsString = ingredientsArr.join(", ");
-
-  try {
-    const response = await hf.chatCompletion({
-      // Groq-supported free model
-      model: "llama3-8b-8192",
-
-      messages: [
-        { role: "system", content: SYSTEM_PROMPT },
-        {
-          role: "user",
-          content: `I have the following ingredients: ${ingredientsString}. Please suggest a recipe.`,
-        },
-      ],
-
-      temperature: 0.7,
-      max_tokens: 600,
+    const msg = await anthropic.messages.create({
+        model: "claude-3-haiku-20240307",
+        max_tokens: 1024,
+        system: SYSTEM_PROMPT,
+        messages: [
+            { role: "user", content: `I have ${ingredientsString}. Please give me a recipe you'd recommend I make!` },
+        ],
     });
-
-    // Extract and return the AI response
-    return response.choices[0].message.content;
-  } catch (error) {
-    console.error("AI Error:", error);
-    return "Sorry, I couldn't generate a recipe right now. Please try again later.";
-  }
+    return msg.content[0].text
 }
