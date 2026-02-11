@@ -1,4 +1,4 @@
-import { HfInference } from "@huggingface/inference";
+import { Anthropic } from '@anthropic-ai/sdk';
 
 // System prompt: defines assistant behavior
 const SYSTEM_PROMPT = `
@@ -15,11 +15,11 @@ Rules:
   - Step-by-step instructions
 `;
 
-// Initialize Hugging Face client
+// Initialize Anthropic client
 const anthropic = new Anthropic({
     // Make sure you set an environment variable in Scrimba 
     // for ANTHROPIC_API_KEY
-    apiKey: process.env.ANTHROPIC_API_KEY,
+    apiKey: import.meta.env.VITE_ANTHROPIC_API_KEY,
     dangerouslyAllowBrowser: true,
 })
 
