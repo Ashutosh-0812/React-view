@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import Ingredients from './components/Ingredients.jsx';
 import GetRecipe from './components/GetRecipe.jsx'
-import getRecipeFromMistral from './api.js'
+import getRecipeFromChefGemini from './api.js'
 
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
   const [recipe, setRecipeText] = useState("")
 
   async function hfRecipe(ingredients){
-    const recipeText = await getRecipeFromMistral(ingredients)
+    const recipeText = await getRecipeFromChefGemini(ingredients)
     setRecipeText(recipeText)
   }
    const toggleRecipe = ()=>{

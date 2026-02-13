@@ -30,7 +30,6 @@ Please give me a recipe you'd recommend I make!
   const model = genAI.getGenerativeModel({ model: "gemini-3-flash-preview" });
   const result = await model.generateContent(prompt);
 
-  console.log("Gemini response:", result);
 
   return result.response.text();
 }
