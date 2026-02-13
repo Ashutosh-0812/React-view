@@ -17,7 +17,7 @@ Rules:
 
 const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
 
-export default async function getRecipeFromChefClaude(ingredientsArr) {
+export default async function getRecipeFromChefGemini(ingredientsArr) {
   const ingredientsString = ingredientsArr.join(", ");
 
   const prompt = `
